@@ -1,0 +1,37 @@
+name: Notion Bot Daily Job
+
+on:
+  schedule:
+    # Horarios configurados para Argentina (UTC-3)
+    # 15:10 Argentina = 18:10 UTC
+    - cron: '10 18 * * *'
+    # 10:00 Argentina = 13:00 UTC
+    - cron: '00 13 * * *'
+    # 21:00 Argentina = 00:00 UTC (día siguiente)
+    - cron: '00 00 * * *'
+  workflow_dispatch:
+
+jobs:
+  send-daily-tip:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run daily tip
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node src/github-runner.js
