@@ -18,7 +18,7 @@ function programarEnvioDiario() {
         timezone: "America/Argentina/Buenos_Aires"
     });
 
-    cron.schedule('00 14 * * *', async () => {
+    cron.schedule('30 14 * * *', async () => {
         const horaArgentina = new Date().toLocaleString('es-AR', {
             timeZone: 'America/Argentina/Buenos_Aires',
             hour12: false
