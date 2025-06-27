@@ -1,15 +1,16 @@
 {
   "name": "notionfybot",
   "version": "1.0.0",
+  "description": "Bot que envía tips diarios desde Notion a Telegram",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "daily": "node src/github-runner.js",
+    "test": "echo \"No tests yet\" && exit 0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": ["notion", "telegram", "bot", "daily"],
+  "author": "Fernando Valero",
+  "license": "MIT",
   "dependencies": {
     "@notionhq/client": "^3.1.3",
     "dotenv": "^16.6.0",
