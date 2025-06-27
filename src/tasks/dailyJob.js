@@ -6,21 +6,40 @@ const { enviarTip } = require('../services/messagingService');
 
 function programarEnvioDiario() {
     // 01:15 todos los días
-    cron.schedule('15 01 * * *', () => {
+    cron.schedule('25 01 * * *', async () => {
         const horaArgentina = new Date().toLocaleString('es-AR', {
             timeZone: 'America/Argentina/Buenos_Aires',
             hour12: false
         });
         console.log(`⏰ Ejecutando tarea programada a las ${horaArgentina} (Argentina)`);
-        enviarTip();
+        const tip = await obtenerTipAleatorio();
+        await enviarTip(tip);
     }, {
         timezone: "America/Argentina/Buenos_Aires"
     });
 
     cron.schedule('00 10 * * *', async () => {
-        console.log("⏰ Ejecutando tarea programada: Enviar tip");
+        const horaArgentina = new Date().toLocaleString('es-AR', {
+            timeZone: 'America/Argentina/Buenos_Aires',
+            hour12: false
+        });
+        console.log(`⏰ Ejecutando tarea programada a las ${horaArgentina} (Argentina)`);
         const tip = await obtenerTipAleatorio();
         await enviarTip(tip);
+    }, {
+        timezone: "America/Argentina/Buenos_Aires"
+    });
+
+    cron.schedule('00 12 * * *', async () => {
+        const horaArgentina = new Date().toLocaleString('es-AR', {
+            timeZone: 'America/Argentina/Buenos_Aires',
+            hour12: false
+        });
+        console.log(`⏰ Ejecutando tarea programada a las ${horaArgentina} (Argentina)`);
+        const tip = await obtenerTipAleatorio();
+        await enviarTip(tip);
+    }, {
+        timezone: "America/Argentina/Buenos_Aires"
     });
 }
 
