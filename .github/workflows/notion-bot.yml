@@ -28,20 +28,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Debug environment variables
+      - name: Run daily tip
         env:
           GITHUB_ACTIONS: true
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          DATABASE_ID: ${{ secrets.DATABASE_ID }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: node src/debug-env.js
-
-      - name: Send daily tip
-        env:
-          GITHUB_ACTIONS: true
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
         run: node src/github-runner.js
+
