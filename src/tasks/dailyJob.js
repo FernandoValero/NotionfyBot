@@ -4,9 +4,11 @@ const cron = require('node-cron');
 const { obtenerTipAleatorio } = require('../services/notionService');
 const { enviarTip } = require('../services/messagingService');
 
+
+//ESTA FUNCION SOLO SE USA PARA PRUEBAS LOCALES
 function programarEnvioDiario() {
     // 01:15 todos los días
-    cron.schedule('45 13 * * *', async () => {
+    cron.schedule('03 22 * * *', async () => {
         const horaArgentina = new Date().toLocaleString('es-AR', {
             timeZone: 'America/Argentina/Buenos_Aires',
             hour12: false
@@ -54,18 +56,5 @@ function programarEnvioDiario() {
         timezone: "America/Argentina/Buenos_Aires"
     });
 }
-
-// Función para verificar zona horaria
-function verificarZonaHoraria() {
-    const ahora = new Date();
-    console.log("🌍 Hora del servidor (UTC):", ahora.toISOString());
-    console.log("🇦🇷 Hora en Argentina:", ahora.toLocaleString('es-AR', {
-        timeZone: 'America/Argentina/Buenos_Aires',
-        hour12: false
-    }));
-}
-
-// Ejecutar al iniciar
-verificarZonaHoraria();
 
 module.exports = { programarEnvioDiario };
