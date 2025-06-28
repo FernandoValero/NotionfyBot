@@ -6,7 +6,7 @@ const { enviarTip } = require('../services/messagingService');
 
 function programarEnvioDiario() {
     // 01:15 todos los días
-    cron.schedule('45 13 * * *', async () => {
+    cron.schedule('03 22 * * *', async () => {
         const horaArgentina = new Date().toLocaleString('es-AR', {
             timeZone: 'America/Argentina/Buenos_Aires',
             hour12: false
