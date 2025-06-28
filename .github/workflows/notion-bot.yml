@@ -3,10 +3,12 @@ name: Notion Bot Daily Job
 on:
   schedule:
     # Horarios configurados para Argentina (UTC-3)
-    # 23:25 Argentina = 02:25 UTC
-    - cron: '25 02 * * *'
-    # 11:00 Argentina = 14:00 UTC
-    - cron: '00 14 * * *'
+    # 00:10 Argentina = 03:10 UTC
+    - cron: '10 03 * * *'
+    # 10:00 Argentina = 13:00 UTC
+    - cron: '00 13 * * *'
+    # 16:00 Argentina = 19:00 UTC
+    - cron: '00 19 * * *'
     # 21:00 Argentina = 00:00 UTC (día siguiente)
     - cron: '00 00 * * *'
   workflow_dispatch:
