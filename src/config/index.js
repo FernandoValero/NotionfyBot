@@ -14,4 +14,5 @@ module.exports = {
     databaseId: process.env.NOTION_DATABASE_ID,
     telegramToken: process.env.TELEGRAM_TOKEN,
     chatId: process.env.TELEGRAM_CHAT_ID
+
 };
