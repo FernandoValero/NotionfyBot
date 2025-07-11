@@ -1,6 +1,6 @@
 const Groq = require('groq-sdk');
 const { groqId } = require('../config');
-const ChatMemoryService = require('./ChatMemoryService');
+const ChatMemoryService = require('./chatMemoryService');
 class GroqIAService {
 
     constructor(userStatsService) {
