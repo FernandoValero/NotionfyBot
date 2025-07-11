@@ -14,10 +14,8 @@ class DatabaseConnection {
         try {
             const mongo_uri = mongoUri ;
 
-            await mongoose.connect(mongo_uri, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-            });
+            mongoose.connect(mongo_uri);
+
 
             this.isConnected = true;
             console.log('✅ Conectado a MongoDB');
